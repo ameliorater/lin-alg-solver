@@ -1,0 +1,48 @@
+selection = "0";
+while selection ~= "9" &&  selection ~= "quit"
+    disp("Enter the number of the operation you would like to run")
+    disp("1: Find an inverse (any square matrix)")
+    disp("2: Find a least squares equation (any degree)")
+    disp("3: Find a least squares solution (approximate sol. to overdetermined system)")
+    disp("4: Find an orthonormal basis")
+    disp("9: Quit program")
+
+    prompt = "";
+    selection = input(prompt,'s');
+    
+    if selection == "9" || selection == "quit"
+        break
+    end
+    
+    proceed = "";
+    disp("Have you saved your input to the correct CSV file? (Y/N)")
+    while proceed ~= "Y"
+        if proceed ~= ""
+            disp("Please enter your matrix or matrices into the CSV file corresponding with the operation you want to run.")
+            disp("Type 'Y' to proceed")
+        end
+        prompt = "";
+        proceed = input(prompt,'s');
+    end
+    
+    if selection == "1"
+        myInverse(readmatrix("inverse-input.csv"))
+    end
+    
+    if selection == "2"
+        disp("What order polynomial would you like to find? (ex: '2' for quadratic)")
+        prompt = "";
+        degree = input(prompt, "s");
+        leastSquaresEquation("ls-eq-input", str2num(degree))
+    end
+    
+    if selection == "3"
+        leastSquaresSolution("ls-sol-input")
+    end
+    
+    if selection == "4"
+        myOrthonormalBasis(readmatrix("orthonormal-input.csv"))
+    end
+    
+    disp("")
+end
