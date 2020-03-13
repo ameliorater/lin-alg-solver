@@ -1,3 +1,6 @@
+% This program finds the transpose of a matrix A
+% Author: Amelia
+
 function A_T = myTranspose(A)
     A_T = zeros(size(A,2), size(A,1));
     % go through the rows of A and form the columns of A_T

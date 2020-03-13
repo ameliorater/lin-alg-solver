@@ -1,3 +1,7 @@
+% This program finds the best approximate solution for an overdetermined
+% system
+% Author: Amelia
+
 function ls_sol = leastSquaresSolution(filename)
     % read in the whole csv to both matrices
     A = readmatrix(filename + ".csv");

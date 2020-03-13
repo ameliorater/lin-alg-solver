@@ -1,3 +1,7 @@
+% This program finds a n-degree polynomial that best approximates a set of
+% points
+% Author: Amelia
+
 function outputStr = leastSquaresEquation(filename, n)
     % read in the whole csv to both matrices
     A = readmatrix(filename + ".csv");
@@ -24,6 +28,7 @@ function outputStr = leastSquaresEquation(filename, n)
     % invert (A * A_T), multiply by A_T, and multiply by b to get solution
     ls_sol = myInverse(A_T_A) * A_T * b;
     
+    % format the solution vector as an equation
     outputStr = "";
     for i = 1:size(ls_sol, 1)
         outputStr = outputStr + "(" + ls_sol(i, 1) + ")*x^" + (i-1);

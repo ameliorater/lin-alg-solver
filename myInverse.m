@@ -1,3 +1,6 @@
+% This program finds the inverse of any NxN matrix
+% Author: Alexander
+
 function AI = myInverse(A)
     n = size(A, 1);
 

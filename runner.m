@@ -1,5 +1,11 @@
+% This program prompts the user for input and calls the functions for each
+% task
+% Author: Victor and Amelia
+
 selection = "0";
 while selection ~= "9" &&  selection ~= "quit"
+    % display initial instructions and options
+    disp("** Make sure you read the README.txt file for full instructions ***")
     disp("Enter the number of the operation you would like to run")
     disp("1: Find an inverse (any square matrix)")
     disp("2: Find a least squares equation (any degree)")
@@ -7,13 +13,16 @@ while selection ~= "9" &&  selection ~= "quit"
     disp("4: Find an orthonormal basis")
     disp("9: Quit program")
 
+    % get user input and save to variable 'selection'
     prompt = "";
     selection = input(prompt,'s');
     
+    % end program if the user requested to quit
     if selection == "9" || selection == "quit"
         break
     end
     
+    % prompt the user to confirm that they have saved input
     proceed = "";
     disp("Have you saved your input to the correct CSV file? (Y/N)")
     while proceed ~= "Y" && proceed ~= "y"
@@ -25,10 +34,12 @@ while selection ~= "9" &&  selection ~= "quit"
         proceed = input(prompt,'s');
     end
     
+    % if user wants to find an inverse
     if selection == "1"
         myInverse(readmatrix("inverse-input.csv"))
     end
     
+    % if user wants to find a least squares equation
     if selection == "2"
         disp("What order polynomial would you like to find? (ex: '2' for quadratic)")
         prompt = "";
@@ -36,14 +47,17 @@ while selection ~= "9" &&  selection ~= "quit"
         leastSquaresEquation("ls-eq-input", str2num(degree))
     end
     
+    % if user wants to find a least squares solution
     if selection == "3"
         leastSquaresSolution("ls-sol-input")
     end
     
+    % if user wants to find an orthonomal basis
     if selection == "4"
         myOrthonormalBasis(readmatrix("orthonormal-input.csv"))
     end
     
+    % prompt the user to continue or quit
     disp("Would you like to run another operation? (Y/N)")
     selection = input("", "s");
     if selection ~= "Y" && selection ~= "y"
